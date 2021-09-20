@@ -633,7 +633,7 @@ def main( argv ):
     argno = 1
     while argno < len( argv ):
 
-        arg = argv[argno].lower()
+        arg = argv[argno]
 
         if arg in gCommands:
             count = 0
