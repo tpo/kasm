@@ -1,21 +1,31 @@
-kasm
-====
+kasm-generic
+============
 
-This is a simple two-pass 6502 assembler that I wrote for fun. No warranty expressed or implied.
+This is a simple two-pass assembler originally written by Landon Dyer for fun. No warranty expressed or implied.
 
-It supports standard opcodes and opcode syntax. Binary output is in Kim-1 (default) or PythonArray format.
+It supports:
+
+* standard 6502 opcodes and opcode syntax (default)
+* or opcodes of a toy 'tpo' CPU
+
+The assembler should be quite easily extensible.
+
+Binary output are:
+
+* Kim-1 format (default)
+* or a Python Array
 
 Command line synopsis:
 
-    python kasm.py [--outFormat=(PythonArray|Kim1)] inputfile[.asm]
+    python kasm.py [--outFormat=(PythonArray|Kim1)] [--inFormat=(6502|tpo)] inputfile[.asm]
 
-The files 'inputfile.lst' (an assembler listing) and 'inputfile.dat' (the Kim-1 format binary) are produced unconditionally.
+The files 'inputfile.lst' (an assembler listing) and 'inputfile.dat' (Kim-1 etc. format) are produced unconditionally.
 
 General syntax:
 
 Labels are case sensitive, and are followed with a colon. Assembler
 mnemonics and psuedo-ops are not case sensitive. The special symbol
-'*' is the location counter of the start of the current line of input.
+`*` is the location counter of the start of the current line of input.
 
     ; ----------------
     ; comments start with semicolons
