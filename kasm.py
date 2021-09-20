@@ -554,7 +554,7 @@ def assembleFile( filename ):
         try:
             gInput = fileinput.FileInput( filename )
         except:
-            print("Error: {0}", sys.exc_value)
+            print("Error: {0}", sys.exc_info()[1])
             return
 
         gLoc = 0
@@ -569,7 +569,7 @@ def assembleFile( filename ):
             err = str.format("Error: {0}({1}): {2}",
                 gInput.file(),
                 gInput.line(),
-                sys.exc_value )
+                sys.exc_info()[1] )
             print(err)
             gotError = True
             # traceback.print_exc()
@@ -679,5 +679,5 @@ if __name__ == '__main__':
     try:
         main( sys.argv )
     except:
-        err = str.format( "Error: {0}", sys.exc_value )
+        err = str.format( "Error: {0}", sys.exc_info()[1] )
         print(err)
