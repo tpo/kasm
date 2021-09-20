@@ -10,6 +10,7 @@ import tok
 import eval
 import fileinput
 import outputKim1
+import outputPythonArray
 import symbols
 import traceback
 import re
@@ -630,6 +631,9 @@ def main( argv ):
     global gCommands
     global gListingFile
     
+    # default
+    outFormat = "Kim1"
+
     argno = 1
     while argno < len( argv ):
 
@@ -650,8 +654,14 @@ def main( argv ):
                 gCommands[arg]['handler']()
                 
         elif arg.startswith( '-' ):
-            
-            raise Exception( str.format( "Unknown option {0}", arg ) )
+            if arg == "--outFormat=PythonArray":
+                outFormat = "PythonArray"
+            elif arg == "--outFormat=Kim1":
+                outFormat = "Kim1"
+            else:
+                raise Exception( str.format( "Unknown option {0}", arg ) )
+
+            argno += 1
 
         else:
             
@@ -672,7 +682,12 @@ def main( argv ):
             gListingFile = open( listingFile, "w" )
 
             if assembleFile( arg ):
-                outputKim1.dumpRecords( outputFile, gMemory )
+                if outFormat == "Kim1":
+                    outputKim1.dumpRecords( outputFile, gMemory )
+                elif outFormat == "PythonArray":
+                    outputPythonArray.dumpRecords( outputFile, gMemory )
+                else:
+                    raise Exception( str.format( "Unknown outFormat {0}", outFormat ) )
 
 
 if __name__ == '__main__':

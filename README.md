@@ -3,11 +3,11 @@ kasm
 
 This is a simple two-pass 6502 assembler that I wrote for fun. No warranty expressed or implied.
 
-It supports standard opcodes and opcode syntax. Binary output is in Kim-1 format.
+It supports standard opcodes and opcode syntax. Binary output is in Kim-1 (default) or PythonArray format.
 
 Command line synopsis:
 
-    python kasm.py inputfile[.asm]
+    python kasm.py [--outFormat=(PythonArray|Kim1)] inputfile[.asm]
 
 The files 'inputfile.lst' (an assembler listing) and 'inputfile.dat' (the Kim-1 format binary) are produced unconditionally.
 
