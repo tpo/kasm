@@ -11,6 +11,7 @@ import eval
 import fileinput
 from addressingModes import *
 import input6502
+import inputTpo
 import outputKim1
 import outputPythonArray
 import symbols
@@ -562,6 +563,8 @@ def main( argv ):
                 outFormat = "PythonArray"
             elif arg == "--outFormat=Kim1":
                 outFormat = "Kim1"
+            elif arg == "--inFormat=tpo":
+                gOps = inputTpo.gOps
             elif arg == "--inFormat=6502":
                 gOps = input6502.gOps
             else:
