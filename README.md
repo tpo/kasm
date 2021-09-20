@@ -47,10 +47,10 @@ Equate values with =
 Labels starting with '.' are local between labels that don't start with '.'
 
     func:       lda     #1
-    .loop       adc     #1
+    .loop:      adc     #1
                 bcc     .loop
     mumble:     ldx     #1
-    .loop       inx                             ; distinct from first '.loop'
+    .loop:      inx                             ; distinct from first '.loop'
                 bne     .loop
 
 Expressions use C operators, and C operator precedence. Operators are (in order of decreasing precedence):
