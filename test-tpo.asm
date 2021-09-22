@@ -3,6 +3,7 @@ initsp:        op_load stackaddr
                op_jmp dispatcher
 
 stackaddr:     db stack ; stack addr
+padding:       db 0
 
 dispatcher:    op_jsub process1
 dispatcher2:   op_jsub process2
