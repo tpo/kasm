@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #
 #   Simple 6502 assembler
 #   Writen by Landon Dyer
