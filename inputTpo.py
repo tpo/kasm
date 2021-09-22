@@ -10,3 +10,5 @@ gOps = {
     'op_yield'  : { IMPLIED: 0x05 }, # alias of OP_RET
     'op_set_sp' : { IMPLIED: 0x06 }, # copy ACC to SP
 }
+
+gAddressWidth = 1 # Byte

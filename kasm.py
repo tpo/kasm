@@ -256,7 +256,14 @@ def depositByteArg( expr, value ):
     depositByte( value )
 
 def depositAbsArg( expr, value ):
-    depositWord( value )
+    global gAddressWidth
+
+    if   gAddressWidth == 1: # Byte
+      depositByte( value )
+    elif gAddressWidth == 2: # Byte
+      depositWord( value )
+    else:
+      raise Exception( str.format( "Unknown gAddressWidth {0}", gAddressWidth) )
 
 def depositRelArg( expr, value ):
     global gLoc
@@ -539,6 +546,7 @@ def main( argv ):
     global gOps
     global gCommands
     global gListingFile
+    global gAddressWidth
     
     # defaults
     outFormat = "Kim1"
@@ -569,7 +577,8 @@ def main( argv ):
             elif arg == "--outFormat=Kim1":
                 outFormat = "Kim1"
             elif arg == "--inFormat=tpo":
-                gOps = inputTpo.gOps
+                gOps          = inputTpo.gOps
+                gAddressWidth = inputTpo.gAddressWidth
             elif arg == "--inFormat=6502":
                 gOps = input6502.gOps
             else:

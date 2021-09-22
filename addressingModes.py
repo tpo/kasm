@@ -38,3 +38,6 @@ INDY = 11
 UNDECIDED_X = 12        # ABSX / ZPX
 UNDECIDED_Y = 13        # ABSY / ZPY
 UNDECIDED = 14          # ABS / ZP / REL
+
+# default:
+gAddressWidth = 2 # Byte
