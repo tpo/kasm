@@ -342,7 +342,7 @@ def assembleInstruction( op, tokenizer, phaseNumber ):
 
     else:
 
-        raise Exception( "Bad addressing mode for instruction" )
+        raise Exception( str.format("Bad addressing mode {0} for instruction {1}", addrMode, op) )
 
 
 def generateListingLine( line ):
