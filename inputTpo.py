@@ -12,3 +12,4 @@ gOps = {
 }
 
 gAddressWidth = 1 # Byte
+gFixedWidthInstructions = 2 # Bytes

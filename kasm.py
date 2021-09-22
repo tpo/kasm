@@ -235,6 +235,26 @@ def depositByte( byte ):
     if gLoc >= 0x10000:
         gLoc = 0
 
+# pad instruction up to the next instuction
+# alignment on fixed width instruction architectures
+def depositInstructionPad():
+    global gLoc, gThisLine, gFixedWidthInstructions
+
+    # when gFixedWidthInstructions == 4
+    # gLoc
+    # |    padding
+    # |    |
+    # v    v
+    # 0 -> 0
+    # 1 -> 3
+    # 2 -> 2
+    # 3 -> 1
+    # 4 -> 0
+    #
+    offset = gLoc % gFixedWidthInstructions
+    if offset > 0:
+        for i in range(0, gFixedWidthInstructions - offset ):
+            depositByte( 0x00 )
 
 def depositWord( word ):
 
@@ -298,6 +318,8 @@ gDepositDispatch = {
 
 
 def assembleInstruction( op, tokenizer, phaseNumber ):
+    global gFixedWidthInstructions
+
     addrMode, expr = parseAddressingMode( tokenizer )
 
     value = None
@@ -344,6 +366,8 @@ def assembleInstruction( op, tokenizer, phaseNumber ):
 
         raise Exception( str.format("Bad addressing mode {0} for instruction {1}", addrMode, op) )
 
+    if gFixedWidthInstructions != None:
+        depositInstructionPad()
 
 def generateListingLine( line ):
     global gListingFile, gPriorFile
@@ -547,6 +571,7 @@ def main( argv ):
     global gCommands
     global gListingFile
     global gAddressWidth
+    global gFixedWidthInstructions
     
     # defaults
     outFormat = "Kim1"
@@ -577,8 +602,9 @@ def main( argv ):
             elif arg == "--outFormat=Kim1":
                 outFormat = "Kim1"
             elif arg == "--inFormat=tpo":
-                gOps          = inputTpo.gOps
-                gAddressWidth = inputTpo.gAddressWidth
+                gOps                    = inputTpo.gOps
+                gAddressWidth           = inputTpo.gAddressWidth
+                gFixedWidthInstructions = inputTpo.gFixedWidthInstructions
             elif arg == "--inFormat=6502":
                 gOps = input6502.gOps
             else:

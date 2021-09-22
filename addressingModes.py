@@ -41,3 +41,4 @@ UNDECIDED = 14          # ABS / ZP / REL
 
 # default:
 gAddressWidth = 2 # Byte
+gFixedWidthInstructions = None
