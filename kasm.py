@@ -5,6 +5,10 @@
 #   ABRMS license
 #
 
+# Coding conventions:
+#
+# - gSomething is a global variable
+
 import sys
 
 import tok
