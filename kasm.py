@@ -575,7 +575,7 @@ def main( argv ):
     
     # defaults
     outFormat = "Kim1"
-    gOps = input6502.gOps
+    gOps = input6502.ops
 
     argno = 1
     while argno < len( argv ):
@@ -602,11 +602,11 @@ def main( argv ):
             elif arg == "--outFormat=Kim1":
                 outFormat = "Kim1"
             elif arg == "--inFormat=tpo":
-                gOps                    = inputTpo.gOps
-                gAddressWidth           = inputTpo.gAddressWidth
-                gFixedWidthInstructions = inputTpo.gFixedWidthInstructions
+                gOps                    = inputTpo.ops
+                gAddressWidth           = inputTpo.addressWidth
+                gFixedWidthInstructions = inputTpo.fixedWidthInstructions
             elif arg == "--inFormat=6502":
-                gOps = input6502.gOps
+                gOps = input6502.ops
             else:
                 raise Exception( str.format( "Unknown option {0}", arg ) )
 

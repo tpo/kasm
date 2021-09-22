@@ -1,6 +1,6 @@
 from addressingModes import *
 
-gOps = {
+ops = {
     'op_nop'    : { IMPLIED: 0x00 }, # don't do anything
     'op_load'   : { ABS:     0x01 }, # load ACC from address
     'op_store'  : { ABS:     0x02 }, # store ACC to address
@@ -11,5 +11,5 @@ gOps = {
     'op_set_sp' : { IMPLIED: 0x06 }, # copy ACC to SP
 }
 
-gAddressWidth = 1 # Byte
-gFixedWidthInstructions = 2 # Bytes
+addressWidth = 1 # Byte
+fixedWidthInstructions = 2 # Bytes
