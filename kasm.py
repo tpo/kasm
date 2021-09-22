@@ -575,7 +575,7 @@ def main( argv ):
     
     # defaults
     outFormat = "Kim1"
-    gOps = input6502.gOps
+    gOps = input6502.ops
 
     argno = 1
     while argno < len( argv ):
