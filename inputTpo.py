@@ -9,6 +9,8 @@ ops = {
     'op_ret'    : { IMPLIED: 0x05 }, # return from subroutine
     'op_yield'  : { IMPLIED: 0x05 }, # alias of OP_RET
     'op_set_sp' : { IMPLIED: 0x06 }, # copy ACC to SP
+    'op_set_int' : { IMPLIED: 0x06 }, # copy ACC to interrupt handler pointer
+    'op_set_int_sp' : { IMPLIED: 0x06 }, # copy ACC to interrupt stack pointer
 }
 
 addressWidth = 1 # Byte
