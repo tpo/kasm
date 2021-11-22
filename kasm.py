@@ -645,3 +645,4 @@ if __name__ == '__main__':
     except:
         err = str.format( "Error: {0}", sys.exc_info()[1] )
         print(err)
+        sys.exit(-1)
