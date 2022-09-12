@@ -16,6 +16,7 @@ ops = {
     'op_jmp_eq'     : { ABS:     0x0a }, # jump to given address if EQ is set
     'op_set_int'    : { IMPLIED: 0x0b }, # copy ACC to interrupt handler pointer
     'op_iret'       : { IMPLIED: 0x0c }, # copy ACC to interrupt handler pointer
+    'op_inc'        : { ABS:     0x0d }, # increate value at give address
 }
 
 addressWidth = 1 # Byte
